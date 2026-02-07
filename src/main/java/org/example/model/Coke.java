@@ -1,0 +1,52 @@
+package org.example.model;
+
+public class Coke extends ProductForSale{
+
+    private boolean hasSugar;
+
+    private double size;
+
+    public Coke(String type, double price, String description) {
+        super(type, price, description);
+    }
+
+    public Coke(String type, double price, String description, boolean hasSugar, double size) {
+        super(type, price, description);
+        this.hasSugar = hasSugar;
+        this.size = size;
+    }
+
+    @Override
+    public void showDetails() {
+        System.out.println(super.toString() + this);
+    }
+
+    @Override
+    public String toString() {
+        return "Coke{" +
+                "hasSugar=" + hasSugar +
+                ", size=" + size +
+                '}';
+    }
+
+    public static class Store {
+        public static void main(String[] args) {
+
+            ProductForSale[] products = new ProductForSale[5];
+            products[0] = new Chocolate("sweet", 15,"chck desc");
+            products[1] = new Bread("Bakery", 5, "br desc", "einkorn", "brown");
+            products[2] = new Coke("Drinks", 15,"dr desc",true,2.5);
+
+            listProducts(products);
+
+        }
+
+        public static void listProducts(ProductForSale[] products) {
+            for (ProductForSale product : products) {
+                if(product != null) {
+                    product.showDetails();
+                }
+            }
+        }
+    }
+}
